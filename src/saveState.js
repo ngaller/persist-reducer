@@ -1,10 +1,11 @@
 export default function saveState({storageKey, keysToSave}, reducer) {
   return (state, action) => {
-    let newState = reducer(state, action)
+    const newState = reducer(state, action)
     if(newState !== state) {
+      let saveState = newState
       if(keysToSave) {
         let wasChanged = false
-        newState = keysToSave.reduce((acc, k) => {
+        saveState = keysToSave.reduce((acc, k) => {
           acc[k] = newState[k]
           wasChanged = wasChanged || newState[k] !== state[k]
           return acc
@@ -12,7 +13,7 @@ export default function saveState({storageKey, keysToSave}, reducer) {
         if(!wasChanged)
           return newState
       }
-      window.localStorage[storageKey] = JSON.stringify(newState)
+      window.localStorage[storageKey] = JSON.stringify(saveState)
     }
     return newState
   }

@@ -33,6 +33,15 @@ describe('saveState', () => {
     window.localStorage['storage-key'].should.eql('{"somestate":"somevalue"}')
   })
 
+  it('does not affect the returned state', () => {
+    const reducer = saveState({storageKey: 'storage-key', keysToSave: ['somestate']}, x => ({
+      somestate: 'somevalue',
+      otherstate: 'someothervalue'
+    }))
+    const state = reducer({}, {type: 'some action'})
+    state.should.eql({somestate: 'somevalue', otherstate: 'someothervalue'})
+  })
+
   it('does not persist, if no specified key has changed', () => {
     const reducer = saveState({storageKey: 'storage-key', keysToSave: ['somestate']}, x => ({
       somestate: 'somevalue',
