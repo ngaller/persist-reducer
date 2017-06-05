@@ -1,7 +1,8 @@
 export default function saveState({storageKey, keysToSave}, reducer) {
   return (state, action) => {
     const newState = reducer(state, action)
-    if(state && window && window.localStorage && newState !== state) {
+    if(state && typeof window !== 'undefined' &&
+      window.localStorage && newState !== state) {
       let saveState = newState
       if(keysToSave) {
         let wasChanged = false
