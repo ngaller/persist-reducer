@@ -1,4 +1,4 @@
-import chai, {should, expect} from 'chai'
+import {should, expect} from 'chai'
 
 global.window = {
   localStorage: {}

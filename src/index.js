@@ -1,2 +1,7 @@
-export {default as saveState} from './saveState'
-export {default as restoreState} from './restoreState'
+import saveState from './saveState.js'
+import restoreState from './restoreState.js'
+
+export {
+  saveState,
+  restoreState
+}

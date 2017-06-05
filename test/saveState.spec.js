@@ -20,7 +20,7 @@ describe('saveState', () => {
     const reducer = saveState({storageKey: 'storage-key'}, x => ({somestate: 'somevalue'}))
     reducer({}, {type: 'some action'})
     window.localStorage.should.have.property('storage-key')
-    window.localStorage['storage-key'].should.eql("{\"somestate\":\"somevalue\"}")
+    window.localStorage['storage-key'].should.eql('{"somestate":"somevalue"}')
   })
 
   it('includes only specified keys', () => {
@@ -30,7 +30,7 @@ describe('saveState', () => {
     }))
     reducer({}, {type: 'some action'})
     window.localStorage.should.have.property('storage-key')
-    window.localStorage['storage-key'].should.eql("{\"somestate\":\"somevalue\"}")
+    window.localStorage['storage-key'].should.eql('{"somestate":"somevalue"}')
   })
 
   it('does not persist, if no specified key has changed', () => {

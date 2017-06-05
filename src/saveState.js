@@ -1,6 +1,4 @@
 export default function saveState({storageKey, keysToSave}, reducer) {
-  let oldState = {}
-
   return (state, action) => {
     let newState = reducer(state, action)
     if(newState !== state) {
