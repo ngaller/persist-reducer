@@ -2,7 +2,7 @@
   "name": "persist-reducer",
   "version": "1.0.0",
   "description": "Simple helper functions to persist a reducer state to local storage",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "lint": "node_modules/.bin/eslint --ext .js .",
     "build": "babel src --out-dir build",
