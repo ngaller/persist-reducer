@@ -1,5 +1,5 @@
 export default function restoreState({storageKey, keysToSave}, defaultState = {}) {
-  const ser = window.localStorage[storageKey]
+  const ser = window && window.localStorage && window.localStorage[storageKey]
   if(ser) {
     try {
       let state = JSON.parse(ser)
