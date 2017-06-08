@@ -1,6 +1,6 @@
 {
   "name": "persist-reducer",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Simple helper functions to persist a reducer state to local storage",
   "main": "build/index.js",
   "jsnext:main": "src/index.js",

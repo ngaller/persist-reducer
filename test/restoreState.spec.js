@@ -33,4 +33,10 @@ describe('restoreState', () => {
     const state = restoreState({storageKey: 'storage-key', keysToSave: ['somestate']}, {})
     state.should.eql({somestate: 'somevalue'})
   })
+
+  it('only restores keys when there is source data', () => {
+    window.localStorage['storage-key'] = '{}'
+    const state = restoreState({storageKey: 'storage-key', keysToSave: ['somestate']}, {})
+    state.should.eql({})
+  })
 })

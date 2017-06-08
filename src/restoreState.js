@@ -7,7 +7,8 @@ export default function restoreState({storageKey, keysToSave}, defaultState = {}
       if (state) {
         if (keysToSave) {
           state = keysToSave.reduce((acc, k) => {
-            acc[k] = state[k]
+            if(k in state)
+              acc[k] = state[k]
             return acc
           }, {})
         }

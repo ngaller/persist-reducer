@@ -24,4 +24,5 @@ This works only in the browser.
 # Comparison with redux-persist
 
 `redux-persist` is much more featureful.  It also registers at the store level,
-as opposed to `persist-reducer` which is applied on a single reducer.
+as opposed to `persist-reducer` which is applied on a single reducer.  This makes
+`persist-reducer` less intrusive in the project.
