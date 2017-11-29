@@ -1,6 +1,6 @@
 {
   "name": "persist-reducer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple helper functions to persist a reducer state to local storage",
   "main": "build/index.js",
   "jsnext:main": "src/index.js",
@@ -18,6 +18,7 @@
     "redux",
     "persist"
   ],
+  "repository" : { "type" : "git" , "url" : "https://github.com/nicocrm/persist-reducer.git" },
   "author": "Nicolas Galler",
   "license": "ISC",
   "devDependencies": {
