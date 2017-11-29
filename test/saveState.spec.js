@@ -33,6 +33,21 @@ describe('saveState', () => {
     window.localStorage['storage-key'].should.eql('{"somestate":"somevalue"}')
   })
 
+  it('includes values in specified key paths', () => {
+    const reducer = saveState(
+      {storageKey: 'storage-key', keysToSave: ['somestate.someprop']},
+      x => ({
+        somestate: {
+          someprop: 'somevalue',
+          otherprop: 'othervalue'
+        }
+      })
+    )
+    reducer({}, {type: 'some action'})
+    window.localStorage.should.have.property('storage-key')
+    window.localStorage['storage-key'].should.eql('{"somestate.someprop":"somevalue"}')
+  })
+
   it('does not affect the returned state', () => {
     const reducer = saveState({storageKey: 'storage-key', keysToSave: ['somestate']}, x => ({
       somestate: 'somevalue',

@@ -21,6 +21,15 @@ This works only in the browser.
         // normal reducer stuff
     })
 
+It is also possible to save / restore a specific value within an object by passing a property path in "keysToSave":
+
+    const saveConfig = {
+      storageKey: 'unique value',
+      keysToSave: ['myObject.myProperty']
+    }
+
+With that configuration, `myObject.myProperty` will be saved but the other properties will not be touched.
+
 # Comparison with redux-persist
 
 `redux-persist` is much more featureful.  It also registers at the store level,

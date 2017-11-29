@@ -34,6 +34,23 @@ describe('restoreState', () => {
     state.should.eql({somestate: 'somevalue'})
   })
 
+  it('restores from key path', () => {
+    window.localStorage['storage-key'] = '{"somestate.someprop":"somevalue"}'
+    const state = restoreState({storageKey: 'storage-key', keysToSave: ['somestate.someprop']}, {})
+    state.should.eql({somestate: { someprop: 'somevalue' }})
+  })
+
+  it('restores from key path, when there are other props on the object', () => {
+    window.localStorage['storage-key'] = '{"somestate.someprop":"somevalue"}'
+    const state = restoreState({storageKey: 'storage-key', keysToSave: ['somestate.someprop']}, {
+      somestate: {
+        someprop: 'oldval',
+        otherprop: 'should not be touched'
+      }
+    })
+    state.should.eql({somestate: { someprop: 'somevalue', otherprop: 'should not be touched' }})
+  })
+
   it('only restores keys when there is source data', () => {
     window.localStorage['storage-key'] = '{}'
     const state = restoreState({storageKey: 'storage-key', keysToSave: ['somestate']}, {})

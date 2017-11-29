@@ -1,3 +1,5 @@
+import objectPath from 'object-path'
+
 export default function saveState({storageKey, keysToSave}, reducer) {
   return (state, action) => {
     const newState = reducer(state, action)
@@ -7,8 +9,9 @@ export default function saveState({storageKey, keysToSave}, reducer) {
       if(keysToSave) {
         let wasChanged = false
         saveState = keysToSave.reduce((acc, k) => {
-          acc[k] = newState[k]
-          wasChanged = wasChanged || newState[k] !== state[k]
+          const val = objectPath.get(newState, k)
+          acc[k] = val
+          wasChanged = wasChanged || val !== objectPath.get(state, k)
           return acc
         }, {})
         if(!wasChanged)
