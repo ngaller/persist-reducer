@@ -30,6 +30,9 @@ It is also possible to save / restore a specific value within an object by passi
 
 With that configuration, `myObject.myProperty` will be saved but the other properties will not be touched.
 
+This can also be passed as an array: `keysToSave: [ ['myObject', 'myProperty.with.some.dots'] ]` will save the property at 
+myObject['myProperty.with.some.dots']
+
 # Comparison with redux-persist
 
 `redux-persist` is much more featureful.  It also registers at the store level,
